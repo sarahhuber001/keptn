@@ -11,9 +11,9 @@ mongo:
     existingSecret: 'mongodb-credentials' # If the password and rootPassword values below are used, remove this field.
     usernames:
       - 'keptn'
-    password: null
+    password:
     rootUser: 'admin'
-    rootPassword: null
+    rootPassword:
     bridgeAuthDatabase: 'keptn'
   external:
     connectionString:
@@ -94,16 +94,16 @@ bridge:
   image:
     repository: docker.io/keptn/bridge2
     tag: ""
-  cliDownloadLink: null
-  integrationsPageLink: null
+  cliDownloadLink:
+  integrationsPageLink:
   secret:
     enabled: true
   versionCheck:
     enabled: true
   showApiToken:
     enabled: true
-  installationType: null
-  lookAndFeelUrl: null
+  installationType:
+  lookAndFeelUrl:
   podSecurityContext:
     enabled: true
     defaultSeccompProfile: true
@@ -177,7 +177,7 @@ configurationService:
     tag: ""
   # storage and storageClass are the settings for the PVC used by the configuration-storage
   storage: 100Mi
-  storageClass: null
+  storageClass:
   fsGroup: 1001
   initContainer: true
   env:
