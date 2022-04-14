@@ -2,7 +2,7 @@
 Expand the name of the chart.
 */}}
 {{- define "jmeter-service.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- include "common.names.name" . -}}
 {{- end }}
 
 {{/*
