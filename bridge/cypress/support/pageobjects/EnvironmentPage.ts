@@ -69,4 +69,5 @@ class EnvironmentPage {
     return cy.get('ktb-stage-details ktb-expandable-tile h2').contains(service).parentsUntil('ktb-expandable-tile');
   }
 }
+
 export default EnvironmentPage;
