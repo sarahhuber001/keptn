@@ -22,25 +22,6 @@ Create chart name and version as used by the chart label.
 {{- include "common.names.chart" . -}}
 {{- end }}
 
-{{/*
-Common labels
-*/}}
-{{- define "keptn.labels" -}}
-helm.sh/chart: {{ include "keptn.chart" . }}
-{{ include "keptn.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-{{/*
-Selector labels
-*/}}
-{{- define "keptn.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "keptn.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
 
 {{/*
 Create the name of the service account to use

@@ -21,26 +21,6 @@ Create chart name and version as used by the chart label.
 {{- include "common.names.chart" . -}}
 {{- end }}
 
-{{/*
-Common labels
-*/}}
-{{- define "helm-service.labels" -}}
-helm.sh/chart: {{ include "helm-service.chart" . }}
-{{ include "helm-service.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-
-{{/*
-Selector labels
-*/}}
-{{- define "helm-service.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "helm-service.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
 
 {{/*
 Create the name of the service account to use
