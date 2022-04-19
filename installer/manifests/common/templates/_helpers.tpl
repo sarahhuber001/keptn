@@ -1,16 +1,26 @@
 {{/* vim: set filetype=mustache: */}}
 
 {{/*
-Common labels
+Kubernetes standard labels
 */}}
-{{- define "control-plane.labels" -}}
-helm.sh/chart: {{ include "control-plane.chart" . }}
+{{- define "common.labels.standard" -}}
+app.kubernetes.io/name: {{ include "common.names.name" . }}
+helm.sh/chart: {{ include "common.names.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
+{{- end -}}
+
+{{/*
+Labels to use on deploy.spec.selector.matchLabels and svc.spec.selector
+*/}}
+{{- define "common.labels.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "common.names.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
 
 {{/*
 Create the name of the service account to use
@@ -236,27 +246,6 @@ securityContext:
 {{/***********************************************************************/}}
 
 {{/*
-Common labels
-*/}}
-{{- define "helm-service.labels" -}}
-helm.sh/chart: {{ include "helm-service.chart" . }}
-{{ include "helm-service.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-
-{{/*
-Selector labels
-*/}}
-{{- define "helm-service.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "helm-service.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
-{{/*
 Create the name of the service account to use
 */}}
 {{- define "helm-service.serviceAccountName" -}}
@@ -269,27 +258,6 @@ Create the name of the service account to use
 
 
 {{/***********************************************************************/}}
-
-{{/*
-Common labels
-*/}}
-{{- define "jmeter-service.labels" -}}
-helm.sh/chart: {{ include "jmeter-service.chart" . }}
-{{ include "jmeter-service.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-
-{{/*
-Selector labels
-*/}}
-{{- define "jmeter-service.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "jmeter-service.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
 
 {{/*
 Create the name of the service account to use
