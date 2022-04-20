@@ -37,6 +37,27 @@ find . -name values.yaml -exec sed -i -- "s/docker.io\/keptn\//docker.io\/${DOCK
 mkdir keptn-charts/
 
 # ####################
+# COMMON HELM CHART
+# ####################
+COMMON_CHART_BASE_PATH=installer/manifests
+
+helm package ${COMMON_CHART_BASE_PATH}/chart --app-version "$IMAGE_TAG" --version "$VERSION"
+if [ $? -ne 0 ]; then
+  echo "Error packaging installer, exiting..."
+  exit 1
+fi
+
+mv "common-${VERSION}.tgz" "keptn-charts/common-${VERSION}.tgz"
+
+#verify the chart
+helm template --debug "keptn-charts/common-${VERSION}.tgz"
+
+if [ $? -ne 0 ]; then
+  echo "::error Common Helm Chart has templating errors -exiting"
+  exit 1
+fi
+
+# ####################
 # INSTALLER HELM CHART
 # ####################
 INSTALLER_BASE_PATH=installer/manifests
