@@ -1,3 +1,5 @@
+#TODO: define nameOverride for all services
+
 mongo:
   enabled: true
   host: mongodb:27017
