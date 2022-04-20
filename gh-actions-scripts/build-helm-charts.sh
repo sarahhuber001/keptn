@@ -39,7 +39,7 @@ mkdir keptn-charts/
 # ####################
 # COMMON HELM CHART
 # ####################
-COMMON_CHART_BASE_PATH=installer/manifests
+COMMON_CHART_BASE_PATH=installer/manifests/common
 
 helm package ${COMMON_CHART_BASE_PATH}/chart --app-version "$IMAGE_TAG" --version "$VERSION"
 if [ $? -ne 0 ]; then
