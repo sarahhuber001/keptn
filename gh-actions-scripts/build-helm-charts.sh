@@ -49,14 +49,6 @@ fi
 
 mv "common-${VERSION}.tgz" "keptn-charts/common-${VERSION}.tgz"
 
-#verify the chart
-helm template --debug "keptn-charts/common-${VERSION}.tgz"
-
-if [ $? -ne 0 ]; then
-  echo "::error Common Helm Chart has templating errors -exiting"
-  exit 1
-fi
-
 # ####################
 # INSTALLER HELM CHART
 # ####################
