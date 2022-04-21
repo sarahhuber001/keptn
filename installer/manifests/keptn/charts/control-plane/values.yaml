@@ -1,3 +1,11 @@
+global:
+  keptn:
+    repository: docker.io/keptn
+    appVersion: ""
+  apiGatewayNginx:
+    repository: docker.io/nginxinc/nginx-unprivileged
+    tag: 1.21.6-alpine
+
 mongo:
   enabled: true
   host: mongodb:27017
@@ -70,16 +78,16 @@ apiGatewayNginx:
     allowPrivilegeEscalation: false
     privileged: false
   image:
-    repository: docker.io/nginxinc/nginx-unprivileged
-    tag: 1.21.6-alpine
+    repository: "{{ .Values.global.apiGatewayNginx.repository }}"
+    tag: "{{ .Values.global.apiGatewayNginx.tag }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 remediationService:
   image:
-    repository: docker.io/keptn/remediation-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/remediation-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
@@ -87,8 +95,8 @@ remediationService:
 apiService:
   tokenSecretName:
   image:
-    repository: docker.io/keptn/api
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/api"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   maxAuth:
     enabled: true
     requestsPerSecond: "1.0"
@@ -99,8 +107,8 @@ apiService:
 
 bridge:
   image:
-    repository: docker.io/keptn/bridge2
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/bridge2"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   cliDownloadLink: null
   integrationsPageLink: null
   secret:
@@ -143,8 +151,8 @@ distributor:
     hostname:
     namespace:
   image:
-    repository: docker.io/keptn/distributor
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/distributor"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   config:
     queueGroup:
       enabled: true
@@ -157,8 +165,8 @@ distributor:
 
 shipyardController:
   image:
-    repository: docker.io/keptn/shipyard-controller
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/shipyard-controller"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   config:
     taskStartedWaitDuration: "10m"
     uniformIntegrationTTL: "48h"
@@ -176,16 +184,16 @@ shipyardController:
 
 secretService:
   image:
-    repository: docker.io/keptn/secret-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/secret-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 configurationService:
   image:
-    repository: docker.io/keptn/configuration-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/configuration-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   # storage and storageClass are the settings for the PVC used by the configuration-storage
   storage: 100Mi
   storageClass: null
@@ -202,8 +210,8 @@ resourceService:
   enabled: false
   replicas: 1
   image:
-    repository: docker.io/keptn/resource-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/resource-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   env:
     GIT_KEPTN_USER: "keptn"
     GIT_KEPTN_EMAIL: "keptn@keptn.sh"
@@ -214,32 +222,32 @@ resourceService:
 
 mongodbDatastore:
   image:
-    repository: docker.io/keptn/mongodb-datastore
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/mongodb-datastore"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 lighthouseService:
   image:
-    repository: docker.io/keptn/lighthouse-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/lighthouse-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 statisticsService:
   image:
-    repository: docker.io/keptn/statistics-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/statistics-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 approvalService:
   image:
-    repository: docker.io/keptn/approval-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/approval-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
@@ -247,8 +255,8 @@ approvalService:
 webhookService:
   enabled: true
   image:
-    repository: docker.io/keptn/webhook-service
-    tag: ""
+    repository: "{{ .Values.global.keptn.repository }}/webhook-service"
+    tag: "{{ .Values.global.keptn.appVersion }}"
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
