@@ -24,7 +24,7 @@ appVersion: latest
 
 dependencies:
   - name: common
-    repository: https://charts.keptn.sh
+    repository: https://charts-dev.keptn.sh
     tags:
       - keptn-common
-    version: 1.x.x
+    version: 0.15.0-dev-PR-7529
