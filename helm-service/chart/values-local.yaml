@@ -1,0 +1,7 @@
+# for local templating use helm template . -f values-local.yaml --name-template hubs-helm-service --output-dir ../temp
+
+global:
+  # use custom image/version e.g. for local testing
+  keptn:
+    repository: "test/it/like-a-dude"          # keptn registry/image name
+    appVersion: xx.xx.xx                       # keptn version/tag

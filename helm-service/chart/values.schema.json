@@ -77,7 +77,7 @@
         "image": {
           "properties": {
             "repository": {
-              "pattern": "^([a-z0-9][a-z0-9-.]{2,63})(:[0-9]+)?([a-z0-9-_./]{1,128})$"
+              "pattern": "^*$"
             },
             "pullPolicy": {
               "enum": [
@@ -105,7 +105,7 @@
         "image": {
           "properties": {
             "repository": {
-              "pattern": "^([a-z0-9][a-z0-9-.]{2,63})(:[0-9]+)?([a-z0-9-./]{1,128})$"
+              "pattern": "^*$"
             },
             "pullPolicy": {
               "enum": [
