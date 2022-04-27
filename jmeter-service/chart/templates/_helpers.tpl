@@ -36,7 +36,7 @@ Common labels
 {{- define "jmeter-service.labels" -}}
 helm.sh/chart: {{ include "jmeter-service.chart" . }}
 {{ include "jmeter-service.selectorLabels" . }}
-app.kubernetes.io/version: {{ tpl .Values.jmeterservice.image.tag . | default .Chart.AppVersion | quote }}
+app.kubernetes.io/version: {{ tpl .Values.jmeterservice.image.tag . | default .Chart.AppVersion }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
