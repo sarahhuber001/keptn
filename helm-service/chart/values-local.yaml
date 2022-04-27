@@ -1,3 +1,5 @@
+# This is a local values file
+# use it if you want to customise your locally created keptn artefacts.
 # for local templating use helm template . -f values-local.yaml --name-template test-helm-service --output-dir ../temp
 
 global:
