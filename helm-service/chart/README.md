@@ -9,11 +9,13 @@ Helm Chart for the keptn helm-service
 
 The following table lists the configurable parameters of the Helm-service chart and their default values.
 
-| Parameter                | Description             | Default        |
-| ------------------------ | ----------------------- | -------------- |
-| `helmservice.image.repository` | Container image name | `"docker.io/keptn/helm-service"` |
+| Parameter                | Description             | Default       |
+| ------------------------ | ----------------------- | ------------- |
+| `global.keptn.repository` | Container repository/registry name. Will be set to all services. | `"docker.io/keptn/"` |
+| `global.keptn.tag` | Container tag. Will be set to all services. | `""` |
+| `helmservice.image.repository` | Container image name | `"global.keptn.image.repository/helm-service"` |
 | `helmservice.image.pullPolicy` | Kubernetes image pull policy | `"IfNotPresent"` |
-| `helmservice.image.tag` | Container tag | `""` |
+| `helmservice.image.tag` | Container tag | `global.keptn.image.tag` |
 | `helmservice.service.enabled` | Creates a kubernetes service for the helm-service | `true` |
 | `distributor.stageFilter` | Sets the stage this helm service belongs to | `""` |
 | `distributor.serviceFilter` | Sets the service this helm service belongs to | `""` |

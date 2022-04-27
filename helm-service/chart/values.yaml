@@ -1,7 +1,7 @@
 global:
-  keptn:
-    repository: docker.io/keptn
-    appVersion: ""
+  keptn:                                     # This values will be automatically templated to all keptn services
+    repository: docker.io/keptn              # Registry/Repository where the image is located. The Image Name will be templated automatically. Example: <this-property>/distributor
+    appVersion: ""                           # Container Tag
 
 helmservice:
   image:
