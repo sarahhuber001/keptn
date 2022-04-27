@@ -1,4 +1,4 @@
-# for local templating use helm template . -f values-local.yaml --name-template hubs-keptn --output-dir ../../temp
+# for local templating use helm template . -f values-local.yaml --name-template test-control-plane --output-dir ../../temp
 
 global:
 # use custom image/version e.g. for local testing
