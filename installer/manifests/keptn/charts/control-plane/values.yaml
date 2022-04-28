@@ -3,8 +3,8 @@ global:
     registry: docker.io/keptn                # Registry where the image is located.
     tag: ""                                  # Container Tag globally for all keptn services
   apiGatewayNginx:
-    repository: docker.io/nginxinc/nginx-unprivileged
-    tag: 1.21.6-alpine
+    registry: docker.io/nginxinc             # Nginx Registry
+    tag: 1.21.6-alpine                       # Nginx Tag
 
 mongo:
   enabled: true
@@ -78,8 +78,9 @@ apiGatewayNginx:
     allowPrivilegeEscalation: false
     privileged: false
   image:
-    repository: "{{ .Values.global.apiGatewayNginx.repository }}"
-    tag: "{{ .Values.global.apiGatewayNginx.tag }}"
+    registry: ""                             # Container Registry
+    repository: "nginx-unprivileged"         # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
