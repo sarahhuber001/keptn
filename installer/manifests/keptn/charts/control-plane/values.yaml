@@ -1,7 +1,7 @@
 global:
   keptn:
-    repository: docker.io/keptn
-    appVersion: ""
+    registry: docker.io/keptn                # Registry where the image is located.
+    tag: ""                                  # Container Tag globally for all keptn services
   apiGatewayNginx:
     repository: docker.io/nginxinc/nginx-unprivileged
     tag: 1.21.6-alpine
@@ -86,8 +86,9 @@ apiGatewayNginx:
 
 remediationService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/remediation-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "remediation-service"        # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
@@ -95,8 +96,9 @@ remediationService:
 apiService:
   tokenSecretName:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/api"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "api"                        # Container Image Name
+    tag: ""                                  # Container Tag
   maxAuth:
     enabled: true
     requestsPerSecond: "1.0"
@@ -107,8 +109,9 @@ apiService:
 
 bridge:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/bridge2"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "bridge2"                    # Container Image Name
+    tag: ""                                  # Container Tag
   cliDownloadLink: null
   integrationsPageLink: null
   secret:
@@ -151,8 +154,9 @@ distributor:
     hostname:
     namespace:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/distributor"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "distributor"                # Container Image Name
+    tag: ""                                  # Container Tag
   config:
     queueGroup:
       enabled: true
@@ -165,8 +169,9 @@ distributor:
 
 shipyardController:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/shipyard-controller"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "shipyard-controller"        # Container Image Name
+    tag: ""                                  # Container Tag
   config:
     taskStartedWaitDuration: "10m"
     uniformIntegrationTTL: "48h"
@@ -184,16 +189,18 @@ shipyardController:
 
 secretService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/secret-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "secret-service"             # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 configurationService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/configuration-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "configuration-service"      # Container Image Name
+    tag: ""                                  # Container Tag
   # storage and storageClass are the settings for the PVC used by the configuration-storage
   storage: 100Mi
   storageClass: null
@@ -210,8 +217,9 @@ resourceService:
   enabled: false
   replicas: 1
   image:
-    repository: "{{ .Values.global.keptn.repository }}/resource-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "resource-service"           # Container Image Name
+    tag: ""                                  # Container Tag
   env:
     GIT_KEPTN_USER: "keptn"
     GIT_KEPTN_EMAIL: "keptn@keptn.sh"
@@ -222,32 +230,36 @@ resourceService:
 
 mongodbDatastore:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/mongodb-datastore"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "mongodb-datastore"          # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 lighthouseService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/lighthouse-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "lighthouse-service"         # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 statisticsService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/statistics-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "statistics-service"         # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
 
 approvalService:
   image:
-    repository: "{{ .Values.global.keptn.repository }}/approval-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "approval-service"           # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
@@ -255,8 +267,9 @@ approvalService:
 webhookService:
   enabled: true
   image:
-    repository: "{{ .Values.global.keptn.repository }}/webhook-service"
-    tag: "{{ .Values.global.keptn.appVersion }}"
+    registry: ""                             # Container Registry
+    repository: "webhook-service"            # Container Image Name
+    tag: ""                                  # Container Tag
   nodeSelector: {}
   gracePeriod: 120     # gracePeriod set to preStop hook time +30s
   preStopHookTime: 90
