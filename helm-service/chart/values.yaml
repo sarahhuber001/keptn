@@ -5,7 +5,7 @@ global:
 
 helmservice:
   image:
-    registry: ""
+    registry: ""                             # Container Registry
     repository: "helm-service"               # Container Image Name
     tag: ""                                  # Container Tag
     pullPolicy: IfNotPresent                 # Kubernetes Image Pull Policy
@@ -19,7 +19,7 @@ distributor:
   serviceFilter: ""                          # Service to which this helm service belongs; default=all; comma-separated list to filter for set of services
   projectFilter: ""                          # Project to which this helm service belongs; default=all; comma-separated list to filter for set of projects
   image:
-    registry: ""
+    registry: ""                             # Container Registry
     repository: "distributor"                # Container Image Name
     tag: ""                                  # Container Tag
     pullPolicy: IfNotPresent                 # Kubernetes Image Pull Policy
