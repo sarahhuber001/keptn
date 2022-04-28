@@ -5,7 +5,7 @@
 global:
 # use custom image/version e.g. for local testing
   keptn:
-    repository: "test/it/like-a-dude"          # keptn registry/image name
+    registry: "test/it/like-a-dude"          # keptn registry/image name
     appVersion: xx.xx.xx                       # keptn version/tag
 
 # only change if version at ./charts/control-plane/values.yaml --> apiGatewayNginx.repository/tag is not satisfying
