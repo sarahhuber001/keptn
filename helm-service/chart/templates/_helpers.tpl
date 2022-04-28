@@ -36,7 +36,7 @@ Common labels
 {{- define "helm-service.labels" -}}
 helm.sh/chart: {{ include "helm-service.chart" . }}
 {{ include "helm-service.selectorLabels" . }}
-app.kubernetes.io/version: {{ tpl .Values.helmservice.image.tag . | default .Chart.AppVersion }}
+app.kubernetes.io/version: {{ include "service.tag" ( dict "imageRoot" .Values.helmservice.image "global" .Values.global.keptn "defaultTag" .Chart.AppVersion) }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 

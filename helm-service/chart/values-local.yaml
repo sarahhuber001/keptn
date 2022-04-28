@@ -5,5 +5,5 @@
 global:
   # use custom image/version e.g. for local testing
   keptn:
-    repository: "test/it/like-a-dude"          # keptn registry/image name
-    appVersion: xx.xx.xx                       # keptn version/tag
+    registry: "test/it/like-a-dude"          # keptn registry/image name
+    tag: xx.xx.xx                            # keptn version/tag
