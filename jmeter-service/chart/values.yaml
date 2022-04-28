@@ -1,6 +1,6 @@
 global:
   keptn:                                     # This values will be automatically templated to all keptn services
-    registry: docker.io/keptn                # Registry/Repository where the image is located. The Image Name will be templated automatically. Example: <this-property>/distributor
+    registry: docker.io/keptn                # Registry where the image is located.
     tag: ""                                  # Container Tag globally for all keptn services
 
 jmeterservice:
